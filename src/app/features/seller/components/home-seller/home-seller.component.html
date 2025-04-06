@@ -61,21 +61,15 @@
             </div>
 </div>
 <hr>
-<h4 class="mx-4">Hamburguesas</h4>
-<div class="w-full flex  space-x-3 mx-2 items-center justify-center my-2">
-
-  <app-product-card class="w-[50%]"></app-product-card>
-  <app-product-card class="w-[50%] "></app-product-card>
-</div>
-<h4 class="mx-4"> Pizzas</h4>
-<div class="w-full flex  space-x-3 mx-2 items-center justify-center my-2">
-
-  <app-product-card class="w-[50%]"></app-product-card>
-  <app-product-card class="w-[50%] "></app-product-card>
-</div>
-<div class="w-full flex  space-x-3 mx-2 items-center justify-center my-2">
-  <app-product-card class="w-[50%]"></app-product-card>
-  <app-product-card class="w-[50%] "></app-product-card>
+<div class="product-sections">
+  <div  *ngFor="let category of categories">
+    <h4 class="mx-4">{{category.name}}</h4>
+    <div class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-2 items-center justify-center my-2">
+      <ng-container *ngFor="let product of category.products">
+        <app-product-card class="w-full" [product]="product"></app-product-card>
+      </ng-container>
+    </div>
+  </div>
 </div>
 <style>
 .hide-scroll-bar {
